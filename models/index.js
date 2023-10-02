@@ -3,7 +3,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 
 // Database Connection
 const sequelize = new Sequelize(
-  `postgres//rahmat:rahmat@localhost:5432/discover`,
+  `postgres://rahmat:rahmat@localhost:5432/discover`,
   { dialect: "postgres" }
 );
 

@@ -11,7 +11,7 @@ const signup = async (req, res) => {
     const data = {
       userName,
       email,
-      password: bcrypt.hash(password, 10),
+      password: await bcrypt.hash(password, 10),
     };
     const user = await User.create(data);
 
@@ -43,7 +43,7 @@ const login = async (req, res) => {
     });
 
     if (user) {
-      const isSame = await bcrypt.compare(password, User.password);
+      const isSame = await bcrypt.compare(password, user.password);
 
       if (isSame) {
         let token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
